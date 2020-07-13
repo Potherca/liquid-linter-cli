@@ -1,6 +1,33 @@
+---
+baseurl: "/liquid-linter-cli"
+description:  Command-line wrapper for the Liquid template language linter.
+permalink: pretty
+repository: Potherca/liquid-linter-cli
+remote_theme: Potherca/extend-the-docs@theme
+title: Liquid Linter CLI
+url: "https://pother.ca"
+
+plugins:
+  - github-pages
+
 exclude: ["node_modules", "tests"]
 
 webrick:
   headers:
     X-Clacks-Overhead: "GNU Terry Pratchett"
 
+# Extend the Docs (Fork) settings
+nav:
+  exclude:
+    - "/"
+  recurse: true
+  cross_repository:
+    show_homepage: false # use the homepage (from the repository settings) instead of https://site.url/repository-name
+    show_archived: false  # Whether to include repositories that have been archived (true) or not (false)
+
+# Just the Docs (Source) settings
+aux_links:
+  "Potherca on GitHub":
+    - "https://github.com/Potherca"
+
+gh_edit_repository: https://github.com/Potherca/liquid-linter-cli
