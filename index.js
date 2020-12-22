@@ -6,7 +6,7 @@ const Chalk = require('chalk');
 const Commander = require('commander');
 const FileHound = require('filehound');
 const FileSystem = require('fs');
-const Linter = require('liquid-linter');
+const Linter = require('@unicorns/liquid-linter');
 const Readline = require('readline');
 const Util = require('util');
 
@@ -53,7 +53,6 @@ function action (p_aPaths) {
     });
 
     p_aPaths.forEach(function (p_sPath) {
-
         var aFiles, oFileHound, oStat, sMessage;
 
         if (FileSystem.existsSync(p_sPath) === false) {
@@ -110,7 +109,7 @@ function action (p_aPaths) {
 
                     console.info(sMessage);
                 } else {
-                    Linter.lintFile(p_sFile, function (p_aErrors) {
+                    Linter.lintFilePromise(p_sFile).then(function(p_aErrors) {
                         // @FIXME: Use warnings if not errors
                         // console.error(Chalk.yellow.underline(p_sPath));
                         // console.error(' ' + Chalk.yellow('warning') + sMessage);
@@ -126,7 +125,7 @@ function action (p_aPaths) {
                                     p_oError.location.line,
                                     p_oError.location.col,
                                     p_oError.location.line,
-                                    p_oError.location.col + p_oError.location.lenght,
+                                    p_oError.location.col + p_oError.location.length,
                                     Chalk.red('error'),
                                     p_oError.message.split('\n')[0]
                                 );
@@ -175,8 +174,8 @@ process.on('unhandledRejection', function(error/*, promise*/) {
 });
 
 Commander
-    .version('0.5.0')
-    .description('Linter for Liquid template files')
+    .version('1.0.2')
+    .description('Linter for Liquid template files (Unicorn Edition)\n\n**This version is for the Shopify extended version of liquid**')
     .arguments('<paths...>')
     // @TODO: Figure out how to accept multiple ignore paths
     // .option('-x, --exclude <ignore-path...>', 'Paths to ignore')
