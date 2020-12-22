@@ -19,7 +19,7 @@
     "commander": "2.20.0",
     "filehound": "1.17.3",
     "@unicorns/liquid-linter": "1.0.2",
-    "snyk": "^1.316.1"
+    "snyk": "^1.425.4"
   },
   "scripts": {
     "test": "node tests/test.js",
